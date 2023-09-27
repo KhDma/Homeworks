@@ -3,26 +3,22 @@ class Point:
         self.x = x
         self.y = y
 
-class Circle(Point):
-    def __init__(self, x0, y0, radius):
-        self.x0 = x0
-        self.y0 = y0
-        self.radius = radius
+class Circle():
+    def __init__(self, x, y, r):
+        self.x = x
+        self.y = y
+        self.r = r
 
-    def contains(self, x, y):
-        super().__init__(x, y)
-        return((x0-x)**2+(y0-y)**2 <= self.radius**2)
-
+    def contains(self, dot):
+        return((self.x-dot.x)**2+(self.y-dot.y)**2 <= self.r**2)
 
 
 
 
-
-
-x0, y0, r = map(int, input().split())
-x,y = map(int, input().split())
-krug = Circle(x0, y0, r)
-print(krug.contains(x, y))
-#krug = Circle(0, 0, 5)
-#print(krug.contains(1, 1))
-
+from random import randint
+for i in range(5):
+    cir = Circle(randint(-10, 10), randint(-10, 10), randint(-10, 10))
+    point = Point(randint(-10, 10), randint(-10, 10))
+    print("Coordinates of Circle:", cir.x, cir.y, cir.r)
+    print("Coordinates of Point:", point.x, point.y)
+    print(cir.contains(point), "\n")
